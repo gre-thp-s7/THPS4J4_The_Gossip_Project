@@ -31,8 +31,12 @@ User.destroy_all
 end
 
 # Création de 10 instances de la class Createtag afin de rajouter 10 gossips dans le tableau tags
-  10.times do |index|
+  20.times do |index|
     tag = Tag.create!(content: Faker::HarryPotter.spell, gossip_id: Gossip.all.sample.id)
   end
 
+  20.times do
+    JoinTableTagGossip = JoinTableTagGossip.create!(tag: Tag.all.sample, gossip: Gossip.all.sample)
+  end
+puts "Done."
 # PRIVATE MESSAGE
