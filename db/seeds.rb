@@ -20,23 +20,23 @@ User.destroy_all
 # Création de 10 instances de la class CreateUser afin de rajouter 10 users dans le tableau users
 10.times do |index|
   user = User.create!(first_name:Faker::Name.first_name, last_name: Faker::Name.last_name, description: 
-    Faker::GameOfThrones.quote, email: Faker::Internet.email, age: rand(18..100))
+    Faker::GameOfThrones.quote, email: Faker::Internet.email, age: rand(18..100), city_id: City.all.sample.id)
   end
 
 
   
 # Création de 20 instances de la class CreateGossip afin de rajouter 20 gossips dans le tableau gossips
 20.times do |index|
-  gossip = Gossip.create!(title: Faker::Coffee.blend_name, content: Faker::HarryPotter.quote, user_id: User.all.sample.id)
+  gossip = Gossip.create!(title: Faker::Coffee.blend_name, content: Faker::HarryPotter.quote, user_id: User.all.sample)
 end
 
 # Création de 10 instances de la class Createtag afin de rajouter 10 gossips dans le tableau tags
   20.times do |index|
-    tag = Tag.create!(content: Faker::HarryPotter.spell, gossip_id: Gossip.all.sample.id)
+    tag = Tag.create!(content: Faker::HarryPotter.spell, user_id: User.all.sample.id)
   end
 
   20.times do
-    JoinTableTagGossip = JoinTableTagGossip.create!(tag: Tag.all.sample, gossip: Gossip.all.sample)
+    jointabletaggossip = JoinTableTagGossip.create!(tag: Tag.all.sample, gossip: Gossip.all.sample)
   end
 puts "Done."
-# PRIVATE MESSAGE
+# PRIVATE MESSAGEgit 
